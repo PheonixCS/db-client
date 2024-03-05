@@ -287,6 +287,12 @@ $form->field($model, 'delivery_type')->dropDownList(
 			$contractorList[$contractor->id] = $contractor->contact_person;
 		}
 	}
+    if (!isset($contractorList)){
+        $contractorList = [];
+    }
+    if(!isset($supplierList)) {
+        $supplierList = [];
+    }
 	//echo $form->field($model, 'organization')->dropDownList($contractorList, ['class' => 'form-control contractorSelect'])->label("Контрагент");
 	echo $form->field($model, 'organization')->widget(Select2::className(), [ 
         'data' => $contractorList, 
@@ -384,6 +390,9 @@ $form->field($model, 'delivery_type')->dropDownList(
 <?php
 foreach ($stageData as $stage) {
 	$stageList[$stage->id] = $stage->name;
+}
+if(!isset($stageList)){
+    $stageList = [];
 }
 echo $form->field($model, 'stage')->dropDownList($stageList, ['style' => 'height: 50px;']);
 ?>
