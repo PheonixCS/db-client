@@ -266,6 +266,9 @@ echo $form->field($model, 'stage')->dropDownList($stageList, ['style' => 'height
 			foreach ($suppliersData as $supplier) {
 				$supplierList[$supplier->id] = $supplier->company_name;
 			}
+            if(!isset($supplierList)) {
+                $supplierList = [];
+            }
 			echo $form->field($modelProviders, 'suppliers[0]')->dropDownList($supplierList, ['disabled' => true]);
 			?>
 		</div>
