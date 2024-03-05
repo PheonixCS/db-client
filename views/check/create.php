@@ -134,7 +134,10 @@ $form->field($model, 'delivery_type')->dropDownList(
 		}
 	}
 	//echo $form->field($model, 'organization')->dropDownList($contractorList, ['class' => 'form-control contractorSelect'])->label("Контрагент");
-	echo $form->field($model, 'organization')->widget(Select2::className(), [ 
+	if (!isset($contractorList)){
+        $contractorList = [];
+    }
+    echo $form->field($model, 'organization')->widget(Select2::className(), [ 
         'data' => $contractorList, 
         'options' => ['placeholder' => 'Выберите контрагента ...', 'class' => 'form-control contractorSelect'], 
         'pluginOptions' => [ 
