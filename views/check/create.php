@@ -231,8 +231,12 @@ $form->field($model, 'delivery_type')->dropDownList(
 <br>
 <br>
 <?php
+
 foreach ($stageData as $stage) {
 	$stageList[$stage->id] = $stage->name;
+}
+if(!isset($stageList)){
+    $stageList = [];
 }
 echo $form->field($model, 'stage')->dropDownList($stageList, ['style' => 'height: 50px;']);
 ?>
